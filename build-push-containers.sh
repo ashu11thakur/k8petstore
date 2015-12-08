@@ -17,16 +17,20 @@
 #K8PetStore version is tied to the redis version.  We will add more info to version tag later.
 #Change the 'jayunit100' string below to you're own dockerhub name and run this script.
 #It will build all the containers for this application and publish them to your dockerhub account
-version="r.1.0.0"
-docker build -t alephnull/k8-petstore-redis:$version ./redis/
-docker build -t alephnull/k8-petstore-redis-master:$version ./redis-master
-docker build -t alephnull/k8-petstore-redis-slave:$version ./redis-slave
-docker build -t alephnull/k8-petstore-web-server:$version ./web-server
 
-docker push alephnull/k8-petstore-redis:$version
-docker push alephnull/k8-petstore-redis-master:$version
-docker push alephnull/k8-petstore-redis-slave:$version
-docker push alephnull/k8-petstore-web-server:$version
+# This will now only build the base containers and push them. The
+# webserver container is the only one whose code we will be touching
+
+version="r.1.0.0"
+docker build -t alephnull/k8petstore-redis:$version ./redis/
+docker build -t alephnull/k8petstore-redis-master:$version ./redis-master
+docker build -t alephnull/k8petstore-redis-slave:$version ./redis-slave
+#docker build -t alephnull/k8petstore-webserver:$version ./web-server
+
+docker push alephnull/k8petstore-redis:$version
+docker push alephnull/k8petstore-redis-master:$version
+docker push alephnull/k8petstore-redis-slave:$version
+#docker push alephnull/k8petstore-webserver:$version
 
 ### Now, start the application.
 
