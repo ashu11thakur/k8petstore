@@ -21,7 +21,7 @@
 # This will now only build the base containers and push them. The
 # webserver container is the only one whose code we will be touching
 
-version="r.1.0.0"
+version="r.1.0.1"
 docker build -t alephnull/k8petstore-redis:$version ./redis/
 docker build -t alephnull/k8petstore-redis-master:$version ./redis-master
 docker build -t alephnull/k8petstore-redis-slave:$version ./redis-slave
